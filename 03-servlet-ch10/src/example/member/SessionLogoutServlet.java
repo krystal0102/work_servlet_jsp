@@ -13,7 +13,7 @@ public class SessionLogoutServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setCharacterEncoding("utf-8");
+		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 
 		// 1. 전체 삭제하는 방법
