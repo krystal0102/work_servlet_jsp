@@ -34,9 +34,17 @@
 		
 	</table>
 	
-	<a href="<c:url value='/book/delete-confirm.jsp?no=${ requestScope.book.isbn }' />">
+	<a href="<c:url value='/book/delete-confirm.jsp?isbn=${ requestScope.book.isbn }' />">
 		삭제하기
 	</a>
+	
+	&nbsp;
+	
+	<a href="<c:url value='/BookServlet?cmd=CMD_UPDATE_FORM&isbn=${ requestScope.book.isbn }'/>">
+		수정하기
+	</a>
+	
+	&nbsp;
 	
 	<a href="BookServlet?cmd=CMD_LIST">도서 목록으로 이동</a>
 </body>

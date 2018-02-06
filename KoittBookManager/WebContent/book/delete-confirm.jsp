@@ -8,7 +8,7 @@
 <body>
 	<h1>삭제 확인</h1>
 
-	<h2>${ param.isbn }번 글을 삭제하시겠습니까?</h2>
+	<h2>${ param.isbn }번 도서를 삭제하시겠습니까?</h2>
 
 	<form action="<c:url value='/BookServlet' />" method="post">
 		<input type="hidden" name="cmd" value="CMD_DELETE">
@@ -16,7 +16,7 @@
 		<input type="submit" value="예">
 	</form>
 	
-	<a href="<c:url value='/BookServlet?cmd=CMD_LIST' />">글 목록으로 이동</a>
+	<a href="<c:url value='/BookServlet?cmd=CMD_LIST' />">도서 목록으로 이동</a>
 	
 </body>
 </html>

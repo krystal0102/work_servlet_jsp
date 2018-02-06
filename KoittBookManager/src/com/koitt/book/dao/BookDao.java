@@ -97,7 +97,7 @@ public class BookDao {
 		Connection conn = DBUtil.getInstance().getConnection();
 		
 		// 2. SQL문 작성
-		String sql = "DELETE FROM book WHERE no = ?";
+		String sql = "DELETE FROM book WHERE isbn = ?";
 		
 		// 3. PreparedStatement 객체 생성 및 물음표 채우기
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -113,6 +113,28 @@ public class BookDao {
 		DBUtil.getInstance().close(conn);
 		
 		// 7. 생략
+	}
+	
+	public void update(Book book) throws ClassNotFoundException, SQLException {
+
+		Connection conn = DBUtil.getInstance().getConnection();
+
+		String sql = "UPDATE book SET title = ?, author = ?, publisher = ?, price = ?, description = ? WHERE isbn = ?";
+
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, book.getTitle());
+		pstmt.setString(2, book.getAuthor());
+		pstmt.setString(3, book.getPublisher());
+		pstmt.setInt(4, book.getPrice());
+		pstmt.setString(5, book.getDescription());
+		pstmt.setInt(6, book.getIsbn());
+		
+
+		pstmt.executeUpdate();
+
+		DBUtil.getInstance().close(pstmt);
+		DBUtil.getInstance().close(conn);
+
 	}
 
 }

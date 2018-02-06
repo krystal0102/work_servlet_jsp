@@ -14,6 +14,8 @@ import com.koitt.book.model.InsertCommand;
 import com.koitt.book.model.Command;
 import com.koitt.book.model.DeleteCommand;
 import com.koitt.book.model.ListCommand;
+import com.koitt.book.model.UpdateCommand;
+import com.koitt.book.model.UpdateFormCommand;
 import com.koitt.book.model.ViewCommand;
 
 public class BookServlet extends HttpServlet { 
@@ -65,6 +67,16 @@ public class BookServlet extends HttpServlet {
 				command = new DeleteCommand();
 				page = command.execute(req, resp);
 				break;
+				
+			case "CMD_UPDATE_FORM":
+				command = new UpdateFormCommand();
+				page = command.execute(req, resp);
+				break;
+				
+			case "CMD_UPDATE":
+				command = new UpdateCommand();
+				page = command.execute(req, resp);
+				break;	
 	
 			}
 			

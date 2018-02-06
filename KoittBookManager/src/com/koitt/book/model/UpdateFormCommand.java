@@ -1,33 +1,40 @@
 package com.koitt.book.model;
 
 import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.koitt.book.dao.BookDao;
+import com.koitt.book.vo.Book;
 
-public class DeleteCommand implements Command{
+public class UpdateFormCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp)
 			throws ClassNotFoundException, SQLException {
-
-		String page = "./book/delete.jsp";
-
+		String page = "./book/update-form.jsp";
+		
 		String _isbn = req.getParameter("isbn");
-
-		if (_isbn == null || _isbn.trim().length() == 0) {
+		
+		if (_isbn == null || _isbn.trim().length() == 0 ) {
 			throw new IllegalArgumentException("도서 번호가 필요합니다.");
 		}
-
+		
 		Integer isbn = Integer.parseInt(_isbn);
-
+		
 		BookDao dao = new BookDao();
-
-		dao.delete(isbn);
-
+		
+		Book book =  dao.select(isbn);
+		
+		if (book == null) {
+			throw new NullPointerException("없거나 삭제된 도서 정보입니다.");
+		}
+		
+		req.setAttribute("book", book);
+		
 		return page;
-
+				
 	}
-
+	
 }
