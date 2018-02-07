@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBUtil {
-	/////////////////////////////////////// 싱글턴 패턴 만들기 ////////////////////////////////////////////
+	// 싱글턴 패턴 만들기
 	
 	// 1. 객체를 저장할 필드 선언
 	private static DBUtil instance;
@@ -28,7 +28,7 @@ public class DBUtil {
 		}
 		return instance;
 	}
-	/////////////////////////////////// End of 싱글턴 패턴 만들기 /////////////////////////////////////////
+	// End of 싱글턴 패턴 만들기
 	
 	// 데이터베이스 커넥션 객체 가져오는 메소드
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
